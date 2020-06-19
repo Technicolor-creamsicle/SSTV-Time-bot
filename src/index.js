@@ -18,7 +18,8 @@ client.user.setActivity("all the time; all the time",{type:"LISTENING"});
 
 //on ready join vc channel and start playing a jingle
 client.on("ready", () => {
-    client.channels.cache.get('695466388839727214').voiceChannel.join();
+    const channel = client.channels.get(config.channel);
+    channel.join();
 
 });
 
