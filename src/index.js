@@ -5,7 +5,8 @@
 
 //importing modules
 const Discord = require("discord.js");
-//const fs = require("fs");
+const fs = require("fs");
+const path = require('path');
 
 //importing files
 const config = require("./config.json");
@@ -13,24 +14,26 @@ const config = require("./config.json");
 // This is making clients
 const client = new Discord.Client();
 
-
-
 //on ready join vc channel and start playing a jingle
 client.on("ready", () => {
   const channel = client.channels.cache.get(config.channel);
 
-  console.log(channel)
-
   //set activity to "LISTENING TO all the time; all the time"
   client.user.setActivity("all the time; all the time", {type:"LISTENING"});
   console.info("bot is online!");
-  
-  //Bot connecting to VC
-  const stream = channel.join();
-  //playing join chime
-  stream.play();
-
+  async function connect() {
+    //Bot connecting to VC
+    const connection = await channel.join();
+    console.info("Bot joined the VC");
+    //Playing join chime
+    const dispatcher = connection.play(fs.createReadStream(path.resolve("./src/assets/chime.ogg" ), { type: 'ogg/opus' }));
+    console.info("Bot should have played the chime");
+    
+    dispatcher.on('error', console.error);
+  }
+  connect()
 });
+
 
 
 
