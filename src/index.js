@@ -4,8 +4,8 @@
 
 
 //importing modules
-import Discord from "discord.js";
-import fs from "fs";
+const Discord = require("discord.js");
+const fs = require("fs");
 
 //importing files
 import config from "./config.json";
