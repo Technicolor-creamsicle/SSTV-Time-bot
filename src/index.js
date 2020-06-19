@@ -9,5 +9,23 @@ import fs from "fs";
 
 //importing files
 import config from "./config.json";
+
 // This is making clients
-cosnt client = new Discord.Client();
+const client = new Discord.Client();
+
+//set activity to "LISTENING TO all the time; all the time"
+client.user.setActivity("all the time; all the time",{type:"LISTENING"});
+
+//on ready join vc channel and start playing a jingle
+client.on("ready", () => {
+    client.channels.cache.get('695466388839727214').voiceChannel.join();
+
+});
+
+
+
+
+
+
+//Logs in the bot pulling from the config file to be made **locally**!
+client.login(config.token);
