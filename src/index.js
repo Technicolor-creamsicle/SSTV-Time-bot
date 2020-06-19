@@ -19,14 +19,20 @@ client.user.setActivity("all the time; all the time",{type:"LISTENING"});
 //on ready join vc channel and start playing a jingle
 client.on("ready", () => {
     const channel = client.channels.get(config.channel);
-    channel.join();
-
+    // eslint-disable-next-line no-unused-vars
+    channel.join().then(connection => {
+        //YeS, 
+        console.log("Successfully connected.");
+      }).catch(e => {
+        // Oh no, bad...
+        console.error(e);
+      });
 });
 
 
 
 
-
-
+//This logs some errors to console thus not causing it to crash as node is "quirky"
+process.on("unhandledRejection", console.error);
 //Logs in the bot pulling from the config file to be made **locally**!
 client.login(config.token);
