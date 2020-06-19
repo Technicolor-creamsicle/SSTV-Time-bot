@@ -1,0 +1,30 @@
+{
+  "name": "sstv-time-bot",
+  "version": "0.0.1",
+  "description": "A Janky Discord.js bot that screams SSTV and in existensial pain",
+  "main": "./src/index.js",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "discord.js": "^12.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "opusscript": "0.0.7"
+  },
+  "scripts": {
+    "test": "node --trace-warnings ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Technicolor-creamsicle/SSTV-Time-bot.git"
+  },
+  "keywords": [
+    "Bot"
+  ],
+  "author": "Alex Technicolor",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Technicolor-creamsicle/SSTV-Time-bot/issues"
+  },
+  "homepage": "https://github.com/Technicolor-creamsicle/SSTV-Time-bot#readme"
+}
