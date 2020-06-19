@@ -104,4 +104,4 @@ dist
 .tern-port
 
 #Stopping keys from being shared
-src/config.json
+*/config.json
