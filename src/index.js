@@ -29,9 +29,12 @@ client.on("ready", () => {
     const dispatcher = connection.play(fs.createReadStream(path.resolve("./src/assets/chime.ogg" ), { type: 'ogg/opus' }));
     console.info("Bot should have played the chime");
     
+    //makes it print errors
     dispatcher.on('error', console.error);
   }
-  connect()
+  connect();
+
+
 });
 
 
