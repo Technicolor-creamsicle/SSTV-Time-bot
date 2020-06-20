@@ -6,8 +6,8 @@
 //importing modules
 const Discord = require("discord.js");
 const fs = require("fs");
-const path = require('path');
-
+const path = require("path");
+const schedule = require("node-schedule");
 //importing files
 const config = require("./config.json");
 
@@ -33,7 +33,7 @@ client.on("ready", () => {
     dispatcher.on('error', console.error);
   }
   connect();
-
+  schedule.scheduleJob('0 * * * *')
 
 });
 
