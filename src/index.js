@@ -26,7 +26,7 @@ client.on("ready", () => {
     const connection = await channel.join();
     console.info("Bot joined the VC");
     //Playing join chime
-    const dispatcher = connection.play(fs.createReadStream(path.resolve("./src/assets/chime.ogg" ), { type: 'ogg/opus' }));
+    const dispatcher = connection.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_ident.ogg`), { type: 'ogg/opus' }));
     console.info("Bot should have played the chime");
     
     //makes it print errors
