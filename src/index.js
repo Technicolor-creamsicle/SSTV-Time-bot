@@ -7,9 +7,9 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const path = require("path");
-const schedule = require("node-schedule");
 //importing files
 const config = require("./config.json");
+const { vsel } = require("./selection.js");
 
 // This is making clients
 const client = new Discord.Client();
@@ -33,9 +33,10 @@ client.on("ready", () => {
     dispatcher.on('error', console.error);
   }
   connect();
-  schedule.scheduleJob('0 * * * *')
-
+  vsel();
 });
+//message handleing for info and status
+
 
 
 
