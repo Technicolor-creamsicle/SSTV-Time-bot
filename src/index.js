@@ -34,8 +34,9 @@ client.on("ready", () => {
   }
   connect();
   vsel();
-  
 });
+//message handleing for info and status
+
 
 
 
