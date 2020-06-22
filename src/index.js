@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 //A Janky Discord.js bot that screams SSTV and in existensial pain
 //Quirky ESlint stuff
-
+//@ts-check
 
 //importing modules
 const Discord = require("discord.js");
@@ -19,7 +19,7 @@ client.on("ready", () => {
   const channel = client.channels.cache.get(config.channel);
 
   //set activity to "LISTENING TO all the time; all the time"
-  client.user.setActivity("all the time; all the time", {type:"LISTENING"});
+  client.user.setActivity("all the time; all the time", { type: "LISTENING" });
   console.info("bot is online!");
   async function connect() {
     //Bot connecting to VC
@@ -28,7 +28,7 @@ client.on("ready", () => {
     //Playing join chime
     const dispatcher = connection.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_ident.ogg`), { type: 'ogg/opus' }));
     console.info("Bot should have played the chime");
-    
+
     //makes it print errors
     dispatcher.on('error', console.error);
   }
