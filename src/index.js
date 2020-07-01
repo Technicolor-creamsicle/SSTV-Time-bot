@@ -26,7 +26,7 @@ client.on("ready", () => {
     //Playing join chime and setting up voice stuff
     const broadcast = client.voice.createBroadcast();
 
-    var dispatcher = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_ident.ogg`), { type: 'ogg/opus' }));
+    var dispatcher = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.voice}/${config.voice}_ident.ogg`), { type: 'ogg/opus' }));
     connection.play(broadcast)
     console.info("Bot should have played the chime");
     //voice announcements
@@ -40,22 +40,22 @@ client.on("ready", () => {
         let now = Date.now;
         console.info("bot is making annocement");
         //Making the voice announcements
-        var announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_at_the_tone.ogg`), { type: 'ogg/opus'}))
-        announcement.on("finish", () => {
-            announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_${now.getUTCHour}.ogg`), { type: 'ogg/opus' }));
-            announcement.on("finish", () => {
-                announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_hours.ogg`), { type: 'ogg/opus' }));
-                announcement.on("finish", () => {
-                    announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_${now.getUTCMinute}.ogg`), { type: 'ogg/opus' }));
+        var announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.voice}/${config.voice}_at_the_tone.ogg`), { type: 'ogg/opus'}))
+        dispatcher.on("finish", () => {
+            announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.voice}/${config.voice}_${now.getUTCHour}.ogg`), { type: 'ogg/opus' }));
+            dispatcher.on("finish", () => {
+                announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.voice}/${config.voice}_hours.ogg`), { type: 'ogg/opus' }));
+                broadcast.on("finish", () => {
+                    announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.voice}/${config.voice}_${now.getUTCMinute}.ogg`), { type: 'ogg/opus' }));
                     announcement.on("finish", () => {
                         if (now.getUTCMinute == 1) {
-                             announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_minute.ogg`)))
+                             announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.voice}/${config.voice}_minute.ogg`)))
                         } else {
-                             announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_minutes.ogg`)))
+                             announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.voice}/${config.voice}_minutes.ogg`)))
                         }
-                        announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_and.ogg`), { type: 'ogg/opus' }));
+                        announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.voice}/${config.voice}_and.ogg`), { type: 'ogg/opus' }));
                         announcement.on("finish", () => {
-                            announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.wwv}/${config.wwv}_30.ogg`), { type: 'ogg/opus' }));
+                            announcement = broadcast.play(fs.createReadStream(path.resolve(`./src/assets/${config.voice}/${config.voice}_30.ogg`), { type: 'ogg/opus' }));
         })})})})})})
 
     //makes it print errors
@@ -63,7 +63,6 @@ client.on("ready", () => {
   }
 
   connect();
-  //announce();
 });
 //message handleing for info and status
 
